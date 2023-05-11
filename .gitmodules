@@ -1,0 +1,16 @@
+[submodule "HashKV"]
+	path = HashKV
+	url = https://github.com/SZ-NPE/HashKV.git
+	branch = TestEnv
+[submodule "diffkv"]
+	path = diffkv
+	url = https://github.com/SZ-NPE/diffkv.git
+	branch = TestEnv
+[submodule "terarkdb"]
+	path = terarkdb
+	url = https://github.com/SZ-NPE/terarkdb.git
+	branch = TestEnv
+[submodule "rocksdb"]
+	path = rocksdb
+	url = https://github.com/SZ-NPE/rocksdb.git
+	branch = TestEnv
