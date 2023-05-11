@@ -56,6 +56,15 @@ const_params="
     --compression_type=none
 "
 
+ycsb_params="
+    --load_duration=0 \
+    --ycsb_workload=${SCRIPT_HOME}/ycsb_workload/workloada \
+    --ycsb_request_speed=100 \
+    --load_num=100000 \
+    --running_num=100000 \
+    --random_fill_average=150 
+"
+
 # rocksdb
 function rocksdb() {
     rm -rf ${db_dir}/*
@@ -66,7 +75,8 @@ function rocksdb() {
     echo 3 >/proc/sys/vm/drop_caches
     ${ROCKSDB_HOME}/build/db_bench \
         ${const_params} \
-        --benchmarks=fillrandom,stats \
+        --benchmarks=ycsb,stats \
+        ${ycsb_params} \
         --use_blob_db=false
 }
 
@@ -107,4 +117,4 @@ function terarkdb() {
         --benchmarks=fillrandom,stats 
 }
 
-terarkdb
+rocksdb
