@@ -98,7 +98,8 @@ function diffkv() {
     echo 3 >/proc/sys/vm/drop_caches
     ${DIFFKV_HOME}/build/titandb_bench \
         ${const_params} \
-        --benchmarks=fillrandom,stats \
+        --benchmarks=ycsb,stats \
+        --${ycsb_params} \
         --use_titan=true \
         --titan_max_background_gc=2 \
         --titan_disable_background_gc=false 
@@ -114,7 +115,8 @@ function terarkdb() {
     echo 3 >/proc/sys/vm/drop_caches
     ${TERARKDB_HOME}/build/db_bench \
         ${const_params} \
-        --benchmarks=fillrandom,stats 
+        --benchmarks=ycsb,stats \
+        --${ycsb_params} 
 }
 
-rocksdb
+terarkdb
