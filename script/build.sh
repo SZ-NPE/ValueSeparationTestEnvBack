@@ -19,7 +19,8 @@ cd ${ROCKSDB_HOME}/build && cmake -DCMAKE_BUILD_TYPE=Release .. && make -j32
 # cd ${HASHKV_HOME} && make 
 
 # diffkv
-cd ${DIFFKV_HOME}/dep/rocksdb && make static_lib -j32
+# 报错则在${DIFFKV_HOME}/dep/rocksdb/CMakeLists.txt添加
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=deprecated-copy -Wno-error=pessimizing-move -Wno-error=range-loop-construct ")
 mkdir ${DIFFKV_HOME}/build
 cd ${DIFFKV_HOME}/build && cmake -DROCKSDB_DIR=${DIFFKV_HOME}/dep/rocksdb -DCMAKE_BUILD_TYPE=Release .. && make -j32
 

@@ -17,10 +17,8 @@ write_buffer_size=64
 target_file_size_base=64
 max_write_buffer_number=2
 monitor_interval=1
-db_dir="/mnt/hjx/hjx"
-wal_dir="/mnt/sdb/hjx"
-db_disk="nvme0n1"
-wal_disk="sdb"
+db_dir="/mnt/shunzi/hjx"
+wal_dir="/mnt/shunzi/hjx"
 
 direct=true
 direct_read=false
@@ -107,7 +105,7 @@ function diffkv() {
     ${DIFFKV_HOME}/build/titandb_bench \
         ${const_params} \
         --benchmarks=ycsb,stats \
-        --${ycsb_params} \
+        ${ycsb_params} \
         --use_titan=true \
         --titan_max_background_gc=2 \
         --titan_disable_background_gc=false 
@@ -124,6 +122,6 @@ function terarkdb() {
     ${TERARKDB_HOME}/build/db_bench \
         ${const_params} \
         --benchmarks=ycsb,stats \
-        --${ycsb_params} 
+        ${ycsb_params} 
 }
 
